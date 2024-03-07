@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    (function(d, m) {
+        var kommunicateSettings = {
+            "appId": "1ea402d8bd0bfb08ee88a84d56b1e9e44",
+            "popupWidget": true,
+            "automaticChatOpenOnNavigation": true,
+            "onInit": function() {
+                var events = {
+                    'onMessageReceived': function(resp) {
+                      if (resp?.message?.message=== "Thanks for your response. Please be informed that our services are currently tailored for businesses and not individual users. Hence, we won't be able to cater to email domains such as Yahoo, Gmail, Outlook, or similar.Thanks for reaching out to CallHippo support Team! Have a fantastic day!") 
+                        {    
+
+                             hideChatWidget();
+                    var css = ".mck-msg-list-icon { display: none; }"; // CSS to hide the button
+                    Kommunicate.customizeWidgetCss(css);
+                            //  hiderestart();
+                        } 
+                    },
+                    'onMessageSent': function(resp) {
+                        
+                        // else {
+                        //     showChatWidget();
+                        // }console.log(resp); // Called when the message is sent
+                    }
+                };
+                Kommunicate.subscribeToEvents(events);
+            }
+        };
+    
+        function showChatWidget() {
+            KommunicateGlobal.document.querySelector(".mck-box-form.mck-row").style.visibility = "visible";
+            KommunicateGlobal.document.querySelector(".mck-box-form.mck-row").style.display = "block";
+        }
+    
+        function hideChatWidget() {
+            KommunicateGlobal.document.querySelector(".mck-box-form.mck-row").style.visibility = "hidden";
+            KommunicateGlobal.document.querySelector(".mck-box-form.mck-row").style.display = "none";
+        }
+
+        function hiderestart(){ 
+            // KommunicateGlobal.documnet.querySelector(".mck-msg-list-icon").style.visibility= "hidden";
+            // KommunicateGlobal.documnet.querySelector(".mck-msg-list-icon").style.display= "none";
+
+
+               var elements = document.querySelectorAll('.mck-msg-list-icon');
+                elements.forEach(function(element) {
+                element.style.display = 'none'
+                elementstyle.visibility= "hidden"; });
+
+        }
+    
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0];
+        h.appendChild(s);
+        window.kommunicate = m;
+        m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+</script>
+    
+</body>
+</html>
